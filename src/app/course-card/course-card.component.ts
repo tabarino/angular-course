@@ -13,8 +13,8 @@ export class CourseCardComponent implements OnInit {
     @Input()
     cardIndex: number;
 
-    @Output()
-    courseSelected = new EventEmitter<Course>();
+    @Output('courseChanged')
+    courseEmitter = new EventEmitter<Course>();
 
     constructor() {
     }
@@ -22,29 +22,7 @@ export class CourseCardComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    onCourseViewed() {
-        this.courseSelected.emit(this.course);
-    }
-
-    cardClasses() {
-        if (this.course.category === 'BEGINNER') {
-            return ['beginner'];
-        }
-
-        // return {
-        //     'beginner': this.course.category === 'BEGINNER'
-        // };
-    }
-
-    cardStyles() {
-        if (this.course.category === 'ADVANCED') {
-            return {
-                'text-decoration': 'underline'
-            };
-        }
-
-        // return {
-        //     'background-image': 'url(' + this.course.iconUrl + ')'
-        // };
+    onSaveClicked(description: string) {
+        this.courseEmitter.emit({ ...this.course, description });
     }
 }
