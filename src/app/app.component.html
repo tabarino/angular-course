@@ -2,8 +2,21 @@
     <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png" alt="logo">
 </div>
 
+{{ courses | json }}
+
+<div class="demo">
+    <div>Start Date: {{ startDate | date: 'dd/MMM/yyyy' }}</div>
+    <div>Title: {{ title | uppercase }}</div>
+    <div>Title: {{ title | lowercase }}</div>
+    <div>Title: {{ title | titlecase }}</div>
+    <div>Price: {{ price | number: '3.3-5' }}</div>
+    <div>Price: {{ price | currency: 'EUR' }}</div>
+    <div>Rate: {{ rate | percent }}</div>
+    <div *ngFor="let pair of coreCourse | keyvalue">{{ pair.key }} : {{ pair.value }}</div>
+</div>
+
 <div class="courses">
-    <course-card *ngFor="let course of courses; index as i;"
+    <course-card *ngFor="let course of courses | slice: 0: 2; index as i;"
         (courseSelected)="onCourseSelected($event)"
         [course]="course" [cardIndex]="i + 1">
     </course-card>
