@@ -8,8 +8,6 @@
     <course-card (courseSelected)="onCourseSelected($event)" [course]="course">
 
         <course-image [src]="course.iconUrl"></course-image>
-        <course-image [src]="courses[1].iconUrl"></course-image>
-        <course-image [src]="courses[2].iconUrl"></course-image>
 
         <h5>Total Lessons: {{ course.lessonsCount }}</h5>
 
