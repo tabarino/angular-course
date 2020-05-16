@@ -26,4 +26,8 @@ export class AppComponent implements OnInit {
     onCourseSelected(course: Course) {
         console.log('courses: ', this.courses);
     }
+
+    onToggle(isHighlighted: boolean) {
+        console.log(isHighlighted);
+    }
 }

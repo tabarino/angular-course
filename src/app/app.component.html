@@ -1,10 +1,11 @@
-<div class="top-menu">
+<div highlighted class="top-menu">
     <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png" alt="logo">
 </div>
 
 <div class="courses" *ngIf="courses[0] as course">
 
-    <course-card highlighted (courseSelected)="onCourseSelected($event)" [course]="course">
+    <course-card highlighted (toggleHighlight)="onToggle($event)"
+        (courseSelected)="onCourseSelected($event)" [course]="course">
 
         <course-image [src]="course.iconUrl"></course-image>
 
