@@ -9,8 +9,7 @@ export class NgxUnlessDirective {
     constructor(
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef
-    ) {
-    }
+    ) { }
 
     @Input()
     set ngxUnless(condition: boolean) {
