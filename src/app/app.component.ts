@@ -8,7 +8,7 @@ import { CourseCardComponent } from './course-card/course-card.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
     courses = COURSES;
 
     @ViewChildren(CourseCardComponent)
@@ -24,15 +24,15 @@ export class AppComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        console.log('First: ', this.cards.first);
+        // console.log('First: ', this.cards.first);
 
-        console.log('Last: ', this.cards.last);
-
-        console.log('Cards Element: ', this.cardsElement);
-
-        this.cards.changes.subscribe(
-            cards => console.log(cards)
-        );
+        // console.log('Last: ', this.cards.last);
+        //
+        // console.log('Cards Element: ', this.cardsElement);
+        //
+        // this.cards.changes.subscribe(
+        //     cards => console.log(cards)
+        // );
     }
 
     onCoursesEdited() {
