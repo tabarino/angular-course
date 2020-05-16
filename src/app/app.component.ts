@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -8,7 +8,7 @@ import { CourseCardComponent } from './course-card/course-card.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
     courses = COURSES;
 
     @ViewChildren(CourseCardComponent)
@@ -21,31 +21,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-    }
-
-    ngAfterViewInit() {
-        // console.log('First: ', this.cards.first);
-
-        // console.log('Last: ', this.cards.last);
-        //
-        // console.log('Cards Element: ', this.cardsElement);
-        //
-        // this.cards.changes.subscribe(
-        //     cards => console.log(cards)
-        // );
-    }
-
-    onCoursesEdited() {
-        this.courses.push(
-            {
-                id: 11,
-                description: "Angular Core Deep Dive - Test",
-                iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
-                longDescription: "A detailed walk-through of the most important part of Angular - the Core and Common modules",
-                category: 'INTERMEDIATE',
-                lessonsCount: 10
-            }
-        )
     }
 
     onCourseSelected(course: Course) {
