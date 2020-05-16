@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -8,7 +8,7 @@ import { CourseCardComponent } from './course-card/course-card.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
     courses = COURSES;
 
     @ViewChild('cardRef1')
@@ -24,9 +24,16 @@ export class AppComponent implements OnInit {
     containerDiv: ElementRef;
 
     constructor() {
+        // undefined
+        // console.log('containerDiv: ', this.containerDiv);
     }
 
     ngOnInit() {
+    }
+
+    ngAfterViewInit(): void {
+        // Earliest Moment that we can access the DOM
+        console.log('containerDiv: ', this.containerDiv);
     }
 
     onCourseSelected(course: Course) {
