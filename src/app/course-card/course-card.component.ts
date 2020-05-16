@@ -13,8 +13,8 @@ export class CourseCardComponent implements OnInit {
     @Input()
     cardIndex: number;
 
-    @Output('courseChanged')
-    courseEmitter = new EventEmitter<Course>();
+    @Output()
+    courseSelected = new EventEmitter<Course>();
 
     constructor() {
     }
@@ -22,7 +22,11 @@ export class CourseCardComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    onSaveClicked(description: string) {
-        this.courseEmitter.emit({ ...this.course, description });
+    isImageVisible() {
+        return this.course && this.course.iconUrl;
+    }
+
+    onCourseViewed() {
+        this.courseSelected.emit(this.course);
     }
 }

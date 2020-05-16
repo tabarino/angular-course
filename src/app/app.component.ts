@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { COURSES } from '../db-data';
+import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
     selector: 'app-root',
@@ -9,9 +11,16 @@ import { COURSES } from '../db-data';
 export class AppComponent implements OnInit {
     courses = COURSES;
 
+    @ViewChild(CourseCardComponent)
+    card = CourseCardComponent;
+
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onCourseSelected(course: Course) {
+        console.log(this.card);
     }
 }
