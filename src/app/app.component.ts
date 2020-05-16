@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -11,38 +11,44 @@ import { CourseCardComponent } from './course-card/course-card.component';
 export class AppComponent implements AfterViewInit {
     courses = COURSES;
 
-    @ViewChild('cardRef1')
-    card1 = CourseCardComponent;
+    @ViewChildren(CourseCardComponent)
+    cards: QueryList<CourseCardComponent>;
 
-    @ViewChild('cardRef1', { read: ElementRef })
-    cardElement1 = ElementRef;
-
-    @ViewChild('cardRef2')
-    card2 = CourseCardComponent;
-
-    @ViewChild('container')
-    containerDiv: ElementRef;
+    @ViewChildren(CourseCardComponent, { read: ElementRef })
+    cardsElement: QueryList<ElementRef>;
 
     constructor() {
-        // undefined
-        // console.log('containerDiv: ', this.containerDiv);
     }
 
     ngOnInit() {
     }
 
-    ngAfterViewInit(): void {
-        // Earliest Moment that we can access the DOM
-        console.log('containerDiv: ', this.containerDiv);
+    ngAfterViewInit() {
+        console.log('First: ', this.cards.first);
+
+        console.log('Last: ', this.cards.last);
+
+        console.log('Cards Element: ', this.cardsElement);
+
+        this.cards.changes.subscribe(
+            cards => console.log(cards)
+        );
+    }
+
+    onCoursesEdited() {
+        this.courses.push(
+            {
+                id: 11,
+                description: "Angular Core Deep Dive - Test",
+                iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
+                longDescription: "A detailed walk-through of the most important part of Angular - the Core and Common modules",
+                category: 'INTERMEDIATE',
+                lessonsCount: 10
+            }
+        )
     }
 
     onCourseSelected(course: Course) {
-        console.log('card1: ', this.card1);
-
-        console.log('cardElement1: ', this.cardElement1);
-
-        console.log('card2: ', this.card2);
-
-        console.log('containerDiv: ', this.containerDiv);
+        console.log('courses: ', this.courses);
     }
 }
