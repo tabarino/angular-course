@@ -4,8 +4,21 @@
 
 <button (click)="onCoursesEdited()">Edit Courses</button>
 
-<div class="courses" #container>
-    <course-card *ngFor="let course of courses"
-        (courseSelected)="onCourseSelected($event)" [course]="course">
+<div class="courses" *ngIf="courses[0] as course">
+    <course-card (courseSelected)="onCourseSelected($event)" [course]="course">
+
+        <div class="course-image">
+            <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+            <h5>Total Lessons: {{ course.lessonsCount }}</h5>
+        </div>
+
+        <div class="course-description">
+            {{ course.longDescription }}
+        </div>
+
+        <div>
+            Edit Description: <textarea></textarea>
+        </div>
+
     </course-card>
 </div>
