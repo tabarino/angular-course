@@ -7,12 +7,7 @@ import { Observable } from 'rxjs';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [
-        {
-            provide: CoursesService,
-            useClass: CoursesService
-        }
-    ]
+    providers: [ CoursesService ]
 })
 export class AppComponent implements OnInit {
     courses$: Observable<Course[]>
