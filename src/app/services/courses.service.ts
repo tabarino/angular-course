@@ -5,9 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root',
-    useFactory: (http) => new CoursesService(http),
-    deps: [HttpClient]
+    providedIn: 'root'
 })
 export class CoursesService {
     constructor(private http: HttpClient) {
