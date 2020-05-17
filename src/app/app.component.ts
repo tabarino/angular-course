@@ -2,13 +2,6 @@ import { Component, Inject, InjectionToken, OnInit } from '@angular/core';
 import { Course } from './model/course';
 import { CoursesService } from './services/courses.service';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-
-function coursesServiceProvider(http: HttpClient): CoursesService {
-    return new CoursesService(http);
-}
-
-export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE');
 
 @Component({
     selector: 'app-root',
@@ -16,16 +9,15 @@ export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVI
     styleUrls: ['./app.component.css'],
     providers: [
         {
-            provide: COURSES_SERVICE,
-            useFactory: coursesServiceProvider,
-            deps: [HttpClient]
+            provide: CoursesService,
+            useClass: CoursesService
         }
     ]
 })
 export class AppComponent implements OnInit {
     courses$: Observable<Course[]>
 
-    constructor(@Inject(COURSES_SERVICE) private coursesService: CoursesService) {
+    constructor(private coursesService: CoursesService) {
     }
 
     ngOnInit() {
