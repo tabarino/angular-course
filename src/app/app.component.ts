@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     courses$: Observable<Course[]>
 
     constructor(
-        @SkipSelf() private coursesService: CoursesService,
+        private coursesService: CoursesService,
         @Inject(CONFIG_TOKEN) private config: AppConfig
     ) {
         console.log(config);
