@@ -4,7 +4,9 @@ import { Course } from '../model/course';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class CoursesService {
     constructor(private http: HttpClient) {
     }
