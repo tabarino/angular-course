@@ -5,10 +5,7 @@ import { CoursesService } from '../services/courses.service';
 @Component({
     selector: 'course-card',
     templateUrl: './course-card.component.html',
-    styleUrls: ['./course-card.component.css'],
-    providers: [
-        CoursesService
-    ]
+    styleUrls: ['./course-card.component.css']
 })
 export class CourseCardComponent implements OnInit {
     @Input()
@@ -31,5 +28,9 @@ export class CourseCardComponent implements OnInit {
             ...this.course,
             description
         });
+    }
+
+    onTitleChanged(newTitle: string) {
+        this.course.description = newTitle;
     }
 }

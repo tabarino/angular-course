@@ -3,15 +3,16 @@ import { Course } from './model/course';
 import { CoursesService } from './services/courses.service';
 import { Observable } from 'rxjs';
 import { AppConfig, CONFIG_TOKEN } from './config';
+import { COURSES } from '../db-data';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    providers: [ CoursesService ]
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    courses$: Observable<Course[]>
+    // courses$: Observable<Course[]>
+    courses = COURSES
 
     constructor(
         private coursesService: CoursesService,
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.courses$ = this.coursesService.loadCourses();
+        // this.courses$ = this.coursesService.loadCourses();
     }
 
     save(course: Course) {

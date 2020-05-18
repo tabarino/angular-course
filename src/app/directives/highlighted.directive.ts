@@ -12,7 +12,7 @@ export class HighlightedDirective {
     @Output()
     toggleHighlight = new EventEmitter();
 
-    constructor(@Host() private coursesService: CoursesService) {
+    constructor() {
         console.log('Directive created');
     }
 
