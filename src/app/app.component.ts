@@ -1,18 +1,17 @@
-import { Component, Inject, InjectionToken, OnInit, Self, SkipSelf } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { Course } from './model/course';
 import { CoursesService } from './services/courses.service';
 import { Observable } from 'rxjs';
 import { AppConfig, CONFIG_TOKEN } from './config';
-import { COURSES } from '../db-data';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-    // courses$: Observable<Course[]>
-    courses = COURSES
+    courses$: Observable<Course[]>
 
     constructor(
         private coursesService: CoursesService,
@@ -22,7 +21,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.courses$ = this.coursesService.loadCourses();
+        this.courses$ = this.coursesService.loadCourses();
     }
 
     save(course: Course) {
@@ -33,19 +32,6 @@ export class AppComponent implements OnInit {
     }
 
     onEditCourse() {
-        // When we turn on the ChangeDetectionStrategy.OnPush on the course-card component
-        // This line won't change the description
-        // Because the course object is the same
-        // this.courses[0].description = 'New Value';
 
-        // However, if we mutate the whole object, it will change anyway
-        // The course object uses @Input and On Push change detection check if this object has changed
-        // It's not recommended to change the object like that, because you are mutating the course object
-        const course = this.courses[0];
-        const newCourse = { ...course };
-
-        newCourse.description = 'New Value';
-
-        this.courses[0] = newCourse;
     }
 }

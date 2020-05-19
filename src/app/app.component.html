@@ -6,7 +6,9 @@
     <button (click)="onEditCourse()">Edit Course</button>
 </div>
 
-<div class="courses">
+<!-- Do not Forget to use as much as possible the async pipe -->
+<!-- If you are using OnPush Change Detection -->
+<div class="courses" *ngIf="(courses$ | async) as courses">
 
     <course-card *ngFor="let course of courses"
                  (courseChanged)="save($event)"
