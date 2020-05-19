@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Attribute, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../model/course';
 
 @Component({
@@ -17,7 +17,8 @@ export class CourseCardComponent implements OnInit {
     @Output('courseChanged')
     courseEmitter = new EventEmitter<Course>();
 
-    constructor() {
+    constructor(@Attribute('type') private type: string) {
+        console.log(type);
     }
 
     ngOnInit(): void {
