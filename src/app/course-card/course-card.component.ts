@@ -1,4 +1,13 @@
-import { Attribute, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    Attribute,
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output
+} from '@angular/core';
 import { Course } from '../model/course';
 
 @Component({
@@ -7,7 +16,7 @@ import { Course } from '../model/course';
     styleUrls: ['./course-card.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnDestroy {
     @Input()
     course: Course;
 
@@ -18,10 +27,12 @@ export class CourseCardComponent implements OnInit {
     courseEmitter = new EventEmitter<Course>();
 
     constructor(@Attribute('type') private type: string) {
-        console.log(type);
+        // this.course is empty at this point
     }
 
     ngOnInit(): void {
+        // There is data on this.course at this point
+        console.log('ngOnInit');
     }
 
     onSaveClicked(description: string) {
@@ -33,5 +44,9 @@ export class CourseCardComponent implements OnInit {
 
     onTitleChanged(newTitle: string) {
         this.course.description = newTitle;
+    }
+
+    ngOnDestroy(): void {
+        console.log('ngOnDestroy');
     }
 }

@@ -8,9 +8,9 @@
 
 <!-- Do not Forget to use as much as possible the async pipe -->
 <!-- If you are using OnPush Change Detection -->
-<div class="courses">
+<div class="courses" *ngIf="courses[0] as course">
 
-    <course-card *ngFor="let course of courses"
+    <course-card
                  (courseChanged)="save($event)"
                  type="beginner"
                  [course]="course">
