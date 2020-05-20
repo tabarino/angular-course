@@ -31,4 +31,8 @@ export class AppComponent implements OnInit {
                 () => alert('Course Saved')
             );
     }
+
+    onEditCourse() {
+        console.log('Edited');
+    }
 }
