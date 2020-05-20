@@ -1,5 +1,5 @@
 import {
-    AfterContentChecked,
+    AfterContentChecked, AfterViewChecked,
     Attribute,
     ChangeDetectionStrategy,
     Component,
@@ -17,7 +17,7 @@ import { Course } from '../model/course';
     styleUrls: ['./course-card.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked {
+export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked, AfterViewChecked {
     @Input()
     course: Course;
 
@@ -44,6 +44,14 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
         console.log('ngAfterContentChecked');
 
         this.course.description = 'ngAfterContentChecked';
+    }
+
+    ngAfterViewChecked(): void {
+        console.log('ngAfterViewChecked');
+
+        // We cannot modify the course in this lifecycle hook
+        // This method is good to scroll down the page, or to do some customisation
+        // on the view, but it cannot changes the values (content)
     }
 
     onSaveClicked(description: string) {
