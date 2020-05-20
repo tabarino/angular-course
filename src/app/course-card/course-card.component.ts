@@ -1,4 +1,5 @@
 import {
+    AfterContentChecked,
     Attribute,
     ChangeDetectionStrategy,
     Component,
@@ -16,7 +17,7 @@ import { Course } from '../model/course';
     styleUrls: ['./course-card.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
+export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked {
     @Input()
     course: Course;
 
@@ -37,6 +38,12 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         console.log('ngOnChanges: ', changes);
+    }
+
+    ngAfterContentChecked(): void {
+        console.log('ngAfterContentChecked');
+
+        this.course.description = 'ngAfterContentChecked';
     }
 
     onSaveClicked(description: string) {
