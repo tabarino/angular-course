@@ -33,6 +33,12 @@ export class AppComponent implements OnInit {
     }
 
     onEditCourse() {
-        this.courses = [undefined];
+        const course = this.courses[0];
+        const newCourse = {
+            ...course,
+            description: 'ngOnChanges'
+        }
+
+        this.courses[0] = newCourse;
     }
 }
