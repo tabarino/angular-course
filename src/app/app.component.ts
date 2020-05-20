@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Inject, OnInit } from '@angular/core';
-import { Course } from './model/course';
-import { CoursesService } from './services/courses.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Course } from './courses/model/course';
+import { CoursesService } from './courses/services/courses.service';
 import { Observable } from 'rxjs';
 import { AppConfig, CONFIG_TOKEN } from './config';
 import { COURSES } from '../db-data';
@@ -30,15 +30,5 @@ export class AppComponent implements OnInit {
             .subscribe(
                 () => alert('Course Saved')
             );
-    }
-
-    onEditCourse() {
-        const course = this.courses[0];
-        const newCourse = {
-            ...course,
-            description: 'ngOnChanges'
-        }
-
-        this.courses[0] = newCourse;
     }
 }
