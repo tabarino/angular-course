@@ -1,8 +1,8 @@
 import {
-    AfterContentChecked, AfterViewChecked,
+    AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
     Attribute,
     ChangeDetectionStrategy,
-    Component,
+    Component, DoCheck,
     EventEmitter,
     Input, OnChanges,
     OnDestroy,
@@ -17,7 +17,9 @@ import { Course } from '../model/course';
     styleUrls: ['./course-card.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterContentChecked, AfterViewChecked {
+export class CourseCardComponent implements
+    OnInit, OnDestroy, OnChanges, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, DoCheck {
+
     @Input()
     course: Course;
 
@@ -31,13 +33,21 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
         // this.course is empty at this point
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('ngOnChanges: ', changes);
+    }
+
     ngOnInit(): void {
         // There is data on this.course at this point
         console.log('ngOnInit');
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log('ngOnChanges: ', changes);
+    ngDoCheck(): void {
+        console.log('ngDoCheck');
+    }
+
+    ngAfterContentInit(): void {
+        console.log('ngAfterContentInit');
     }
 
     ngAfterContentChecked(): void {
@@ -47,6 +57,10 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
 
         // Only Add lightweight code in this lifecycle hook
         // Because it's called multiple times
+    }
+
+    ngAfterViewInit(): void {
+        console.log('ngAfterViewInit');
     }
 
     ngAfterViewChecked(): void {
