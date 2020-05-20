@@ -44,6 +44,9 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
         console.log('ngAfterContentChecked');
 
         this.course.description = 'ngAfterContentChecked';
+
+        // Only Add lightweight code in this lifecycle hook
+        // Because it's called multiple times
     }
 
     ngAfterViewChecked(): void {
@@ -52,6 +55,9 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges, AfterC
         // We cannot modify the course in this lifecycle hook
         // This method is good to scroll down the page, or to do some customisation
         // on the view, but it cannot changes the values (content)
+
+        // Only Add lightweight code in this lifecycle hook
+        // Because it's called multiple times
     }
 
     onSaveClicked(description: string) {
