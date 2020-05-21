@@ -9,6 +9,15 @@
         Welcome to the Angular Core Deep Dive Course
     </h4>
     <button (click)="onEditCourse()" i18n>Edit Course</button>
+
+    <div i18n>{
+            coursesTotal,
+            plural,
+            =0 { No courses are available }
+            =1 { One course is available }
+            other { {{ coursesTotal }} courses are available }
+    }</div>
+
 </div>
 
 <div class="courses">

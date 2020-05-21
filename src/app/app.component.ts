@@ -13,6 +13,7 @@ import { COURSES } from '../db-data';
 export class AppComponent implements OnInit {
     // courses$: Observable<Course[]>
     courses: Course[] = COURSES;
+    coursesTotal = this.courses.length;
 
     constructor(
         private coursesService: CoursesService,
