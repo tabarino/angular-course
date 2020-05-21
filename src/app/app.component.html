@@ -3,7 +3,11 @@
 </div>
 
 <div class="demo">
-    <h4 i18n>Welcome to the Angular Core Deep Dive Course</h4>
+    <!-- If you want to add a custom unique identifier, you can add like this: @@WelcomeMessage -->
+    <!-- <h4 i18n="Welcome Message | Give the user a greeting at the beginning of the course@@WelcomeMessage"> -->
+    <h4 i18n="Welcome Message | Give the user a greeting at the beginning of the course">
+        Welcome to the Angular Core Deep Dive Course
+    </h4>
     <button (click)="onEditCourse()" i18n>Edit Course</button>
 </div>
 
