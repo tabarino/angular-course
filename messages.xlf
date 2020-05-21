@@ -2,6 +2,24 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en-US" datatype="plaintext" original="ng2.template">
         <body>
+            <trans-unit id="b02755f5bbf9cf7cc3819abc24ab7ad4f729478e" datatype="html">
+                <source>
+                    <x id="ICU" equiv-text="{
+                course.category, select, BEGINNER {...} INTERMEDIATE {...} ADVANCED {...}}"/>
+                </source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/app/courses/course-card/course-card.component.html</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="24c09fc3e5c104a7d369f77805c9b66beb40b00f" datatype="html">
+                <source>{VAR_SELECT, select, BEGINNER {Beginner } INTERMEDIATE {Intermediate } ADVANCED {Advanced } }
+                </source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/app/courses/course-card/course-card.component.html</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+            </trans-unit>
             <trans-unit id="7e777f4c292add2e7474323bf98e4d06d07bed80" datatype="html">
                 <source>
                     Welcome to the Angular Core Deep Dive Course
