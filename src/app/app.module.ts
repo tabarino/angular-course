@@ -6,6 +6,7 @@ import { HighlightedDirective } from './courses/directives/highlighted.directive
 import { NgxUnlessDirective } from './courses/directives/ngx-unless.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursesModule } from './courses/courses.module';
+import { CourseTitleComponent } from './courses/course-title/course-title.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { CoursesModule } from './courses/courses.module';
         CoursesModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [CourseTitleComponent]
 })
 
 export class AppModule {
